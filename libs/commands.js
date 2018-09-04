@@ -1,4 +1,4 @@
-// const utils = require('./utils');
+const utils = require('./utils');
 const inquirer = require('inquirer');
 const fs = require('fs');
 // const handlebars = require('handlebars');
@@ -9,8 +9,7 @@ const log = require('./log');
 const ncp = require('ncp').ncp;
 
 
-const install = async (type, cmd) => {
-  log.log(`Installing ${type} globaly.\n`);
+const install = async (feature, cmd) => {
+  require('./commands/install').installCommand(feature, cmd);
 };
-
 module.exports = { install };
