@@ -100,11 +100,28 @@ const installAngular = async () => {
   log.success('✅  NPM install complete');
 }
 
+const installTypescript = async () => {
+  let answers = await inquirer.prompt({
+    type: 'confirm',
+    name: 'install',
+    message: 'Because you want TypeScript support we need to add the tsc dependency - this is a one-time install. Install globally now?'
+  });
+  if (answers.install) {
+    log.alegri('Installing TypeScript, please wait. This will take a minute.');
+    execa.shellSync('npm install -g typescript');
+    log.success('TypeScript installed\n');
+  } else {
+    process.exitCode = 1;
+    log.danger('You must install TypeScript to use this command. Exiting now.');
+  }
+}
+
 module.exports = {
   isRootAtPath,
   rootDirectory,
   cleanArgs,
   isCurrentRoot,
   installReact,
-  installAngular
+  installAngular,
+  installTypescript
 };

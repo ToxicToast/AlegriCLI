@@ -4,7 +4,7 @@ const execa = require('execa');
 
 const installCommand = async (feature, cmd) => {
   const args = utils.cleanArgs(cmd);
-  const options = ['react', 'angular', 'vue'];
+  const options = ['react', 'angular', 'vue', 'typescript'];
   //
   if (args.list || feature === 'list') {
     log.log(`Install options are: ${options.join(', ')}`);
@@ -24,6 +24,13 @@ const installCommand = async (feature, cmd) => {
   }
   if (feature === 'angular') {
     utils.installAngular();
+  }
+  if (feature === 'vue') {
+    log.danger('no support');
+    // utils.installReact();
+  }
+  if (feature === 'typescript') {
+    utils.installTypescript();
   }
 };
 module.exports = { installCommand };
