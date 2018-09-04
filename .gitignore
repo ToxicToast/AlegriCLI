@@ -1,5 +1,10 @@
 # Folders
-/node_modules/*
+node_modules/
+.vscode/
+.idea/
 # Files
 package-lock.json
 yarn-lock.json
+.env
+.env.*
+.DS_Store
