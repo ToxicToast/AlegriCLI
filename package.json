@@ -2,6 +2,7 @@
   "name": "AlegriCLI",
   "version": "0.1.0",
   "description": "Alegri CLI",
+  "homepage": "https://github.com/smallbatch-apps/crab",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
