@@ -89,15 +89,15 @@ const cleanArgs = (cmd) => {
 const isCurrentRoot = () => isRootAtPath(`${process.cwd()}/`);
 
 const installReact = async () => {
-  log.log(`Installing React from NPM`);
+  log.log(`- Installing React from NPM`);
   execa.shellSync('npm install create-react-app -g');
-  log.success('✅  NPM install complete');
+  log.success('NPM install complete');
 }
 
 const installAngular = async () => {
   log.log(`Installing Angular from NPM`);
   execa.shellSync('npm install @angular/cli -g');
-  log.success('✅  NPM install complete');
+  log.success('NPM install complete');
 }
 
 const installTypescript = async () => {

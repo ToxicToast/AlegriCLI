@@ -2,16 +2,12 @@ const utils = require('../utils');
 const log = require('../log');
 const execa = require('execa');
 
-const installCommand = async (feature, cmd) => {
+const installCommand = async (framework, feature, cmd) => {
   const args = utils.cleanArgs(cmd);
-  const options = ['react', 'angular', 'vue', 'typescript'];
+  const options = ['react', 'angular', 'typescript'];
   //
-  if (args.list || feature === 'list') {
-    log.log(`Install options are: ${options.join(', ')}`);
-    return;
-  }
-  if (!options.includes(feature)) {
-    log.danger(`${feature} is not an option`);
+  if (!options.includes(framework) && framework !== undefined) {
+    log.danger(`${framework} is not an option`);
     log.log(`Install options are: ${options.join(', ')}`);
     return;
   }
@@ -19,18 +15,16 @@ const installCommand = async (feature, cmd) => {
     log.danger(`This does not appear to be the root directory.`);
     return;
   }
-  if (feature === 'react') {
+  if (framework === 'react') {
     utils.installReact();
   }
-  if (feature === 'angular') {
+  if (framework === 'angular') {
     utils.installAngular();
   }
-  if (feature === 'vue') {
-    log.danger('no support');
-    // utils.installReact();
-  }
-  if (feature === 'typescript') {
+  if (framework === 'typescript') {
     utils.installTypescript();
   }
+  log.log(args);
+  log.log(feature);
 };
 module.exports = { installCommand };

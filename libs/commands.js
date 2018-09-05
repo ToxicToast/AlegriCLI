@@ -9,7 +9,7 @@ const log = require('./log');
 const ncp = require('ncp').ncp;
 
 
-const install = async (feature, cmd) => {
-  require('./commands/install').installCommand(feature, cmd);
+const installReact = async (options, cmd) => {
+  require('./commands/install').installCommand('react', options, cmd);
 };
-module.exports = { install };
+module.exports = { installReact };
