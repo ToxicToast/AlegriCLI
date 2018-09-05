@@ -109,7 +109,7 @@ const installTypescript = async () => {
   if (answers.install) {
     log.alegri('Installing TypeScript, please wait. This will take a minute.');
     execa.shellSync('npm install -g typescript');
-    log.success('TypeScript installed\n');
+    log.success('TypeScript installed');
   } else {
     process.exitCode = 1;
     log.danger('You must install TypeScript to use this command. Exiting now.');

@@ -11,7 +11,8 @@ const writeGeneratedFile = (error) => {
     log.danger(`A file already exists at ${error.path}. Overwriting prevented.`);
   }
   if (error.code === 'ENOENT') {
-    log.danger(`Not able to create ${error.path}.\n\nYou can create components directly to any subdirectory, but the directory itself must already exist.`);
+    log.danger(`Not able to create ${error.path}.`);
+    log.danger('You can create components directly to any subdirectory, but the directory itself must already exist.');
   }
 }
 
