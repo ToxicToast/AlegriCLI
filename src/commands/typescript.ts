@@ -6,7 +6,7 @@ import { ICmd } from '../interfaces/ICmd';
 
 const log = new Log();
 
-export const reactCommands = async (options: string, cmd: ICmd): Promise<void> => {
+export const typescriptCommands = async (options: string, cmd: ICmd): Promise<void> => {
 	const args = cleanArgs(cmd);
 	const currentRoot = isCurrentRoot();
 	//
@@ -16,11 +16,11 @@ export const reactCommands = async (options: string, cmd: ICmd): Promise<void> =
 	}
 	//
 	if (options === 'install') {
-		log.log('Installing React from NPM');
-		shellSync('npm install create-react-app -g');
+		log.log('Installing Typescript from NPM');
+		shellSync('npm install typescript -g');
 		log.success('NPM install complete');
-		log.log('Checking React Version');
-		const version = shellSync('create-react-app --version');
+		log.log('Checking Typescript Version');
+		const version = shellSync('tsc --v');
 		log.alegri(version.stdout);
 	}
 };
