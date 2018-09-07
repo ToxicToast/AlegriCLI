@@ -6,7 +6,7 @@ version: 2
 general:
   branches:
     only:
-      - master
+      - dev
 jobs:
   build:
     docker:
@@ -40,19 +40,3 @@ jobs:
           key: v1-dependencies-{{ checksum "package.json" }}
 
       - run: npm run lint
-      - run:
-          name: Github Infos
-          command: |
-            git config --global -l && git config --global user.email circleci@circleci && git config --global user.name CircleCI
-      - run:
-          name: Versioning
-          command: |
-            npm run version
-      - run:
-          name: Publish Version to Git
-          command: |
-            npm run publish:git
-      - run:
-          name: Publish Version to NPM
-          command: |
-            npm run publish:npm
