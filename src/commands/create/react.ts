@@ -31,7 +31,7 @@ export class CreateReact {
       await shellSync(command);
     }
     this.logger.success(`${title} created successfully.`);
-      this.logger.success(`Type cd ${title} into the console to visit the Project`);
+    this.logger.success(`Type cd ${title} into the console to visit the Project`);
     // this.logger.alegri('Do you want to add the Redux Boilerplate? y/n');
   }
 
@@ -39,17 +39,17 @@ export class CreateReact {
     const title: IProjectName = await prompt({
       type: 'input',
       name: 'title',
-      message: 'What is the Projectname?'
+      message: 'What is the Projectname?',
     });
-    const projectName = new String(title.title).toLowerCase();
-    return projectName;
+    const projectName = title.title;
+    return `${projectName}`;
   }
 
   private async typeScript(): Promise<any> {
     const typescript: ITypescript = await prompt({
       type: 'confirm',
       name: 'typescript',
-      message: 'Do you want to create the Project as Typescript'
+      message: 'Do you want to create the Project as Typescript',
     });
     return typescript.typescript;
   }
