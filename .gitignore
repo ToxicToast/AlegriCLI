@@ -1,10 +1,10 @@
-# Folders
-node_modules/
-.vscode/
-.idea/
 # Files
 package-lock.json
-yarn-lock.json
-.env
-.env.*
-.DS_Store
+yarn.lock
+
+# Folders
+node_modules
+dist
+typingss
+.vscode
+src/OLDEVERYTHING
