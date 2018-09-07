@@ -52,8 +52,12 @@ export class AlegriCLI {
     command('create')
       .alias('i')
       .description('Creates a Resource from the List')
-      .action(async () => {
-        this.creater.init();
+      .action(async (cmd: any) => {
+        this.creater.init().then((resource) => {
+          if (resource === 'React') {
+            this.creater.react(cmd);
+          }
+        });
       });
   }
 
