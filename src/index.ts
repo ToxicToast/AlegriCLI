@@ -12,7 +12,6 @@ export class AlegriCLI {
 	private helper: Helper;
 	private version: Version;
 	private logger: Logger;
-	private installerChoice: string = '';
 
 	constructor(args: string[]) {
 		this.args = args;
@@ -38,7 +37,11 @@ export class AlegriCLI {
 			.description('Install a Resource from the List')
 			.action(async () => {
 				this.installer.init().then(resource => {
-					this.installerChoice = resource;
+					if (resource === 'Typescript') {
+						this.installer.typescript();
+					} else if (resource === 'React') {
+						this.installer.react();
+					}
 				});
 			});
 	}
