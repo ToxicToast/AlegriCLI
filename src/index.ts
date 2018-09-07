@@ -5,6 +5,7 @@ import { Logger } from './utils/log';
 import { Installer } from './commands/install';
 import { Helper } from './commands/help';
 import { Version } from './commands/version';
+import { Creater } from './commands/create';
 
 export class AlegriCLI {
 	private args: string[];
@@ -12,6 +13,7 @@ export class AlegriCLI {
 	private helper: Helper;
 	private version: Version;
 	private logger: Logger;
+	private creater: Creater;
 
 	constructor(args: string[]) {
 		this.args = args;
@@ -19,10 +21,12 @@ export class AlegriCLI {
 		this.installer = new Installer(this.logger);
 		this.helper = new Helper(this.logger);
 		this.version = new Version(this.logger);
+		this.creater = new Creater(this.logger);
 	}
 
 	public initCommands(): void {
 		this.installCommand();
+		this.createCommand();
 		this.helpCommand();
 		this.versionCommand();
 	}
@@ -43,6 +47,15 @@ export class AlegriCLI {
 						this.installer.react();
 					}
 				});
+			});
+	}
+
+	private createCommand(): void {
+		command('create')
+			.alias('i')
+			.description('Creates a Resource from the List')
+			.action(async () => {
+				this.creater.init();
 			});
 	}
 

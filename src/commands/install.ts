@@ -1,5 +1,6 @@
 import { prompt } from 'inquirer';
 import { Logger } from 'utils/log';
+import { pushedOptions } from '../helpers/options';
 
 import { InstallerReact } from './install/react';
 import { InstallerTypescript } from './install/typescript';
@@ -12,8 +13,7 @@ export class Installer {
 	private typescriptInstaller: InstallerTypescript;
 
 	constructor(logger: Logger) {
-		this.options.push('Typescript');
-		this.options.push('React');
+		this.options = pushedOptions;
 		this.logger = logger;
 		this.reactInstaller = new InstallerReact(this.logger);
 		this.typescriptInstaller = new InstallerTypescript(this.logger);
