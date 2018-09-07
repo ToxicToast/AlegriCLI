@@ -3,16 +3,16 @@ import { Logger } from 'utils/log';
 import { pushedOptions } from '../helpers/options';
 
 export class Creater {
-	private options: string[] = [];
-	private prompt: any;
-	private logger: Logger;
+  private options: string[] = [];
+  private prompt: any;
+  private logger: Logger;
 
-	constructor(logger: Logger) {
-		this.options = pushedOptions;
-		this.logger = logger;
-	}
+  constructor(logger: Logger) {
+    this.options = pushedOptions;
+    this.logger = logger;
+  }
 
-	public async init(): Promise<void> {
-
-	}
+  public async init(): Promise<void> {
+    // Do Nothing
+  }
 }

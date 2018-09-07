@@ -8,3 +8,4 @@ dist
 typingss
 .vscode
 src/OLDEVERYTHING
+.circleci
