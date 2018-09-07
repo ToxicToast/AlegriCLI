@@ -6,22 +6,24 @@ import { parse } from 'path';
 
 export const cleanArgs = (cmd: ICmd): any => {
 	let args: IArgs = {};
-	if (cmd._name !== 'create') {
+	if (cmd._name && cmd._name !== 'create') {
 		args = createCommand(args);
 	}
-	cmd.options.forEach((o: ICmdOption) => {
-		const key = o.long.replace(/^--/, '');
-		if (key === 'typescript') {
-			args.typescript = true;
-		}
-		if (key === 'redux') {
-			args.redux = true;
-		}
-	});
+	if (cmd.options && cmd.options.length > 0) {
+		cmd.options.forEach((o: ICmdOption) => {
+			const key = o.long.replace(/^--/, '');
+			if (key === 'typescript') {
+				args.typescript = true;
+			}
+			if (key === 'redux') {
+				args.redux = true;
+			}
+		});
+	}
 	args.fileExtension = args.typescript ? 'ts' : 'js';
 	args.command = cmd._name;
 	//
-	if (args.command === 'generate') {
+	if (args.command === 'generate' && cmd && cmd.parent && cmd.parent.args.length > 0) {
 		args = generateCommand(args, cmd.parent.args);
 	}
 	if (args.content) {

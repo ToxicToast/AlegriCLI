@@ -23,4 +23,9 @@ export const reactCommands = async (options: string, cmd: ICmd): Promise<void> =
 		const version = shellSync('create-react-app --version');
 		log.alegri(version.stdout);
 	}
+	//
+	if (options === 'generate') {
+		const name = cmd;
+		log.log(`Creating new project in '${name}' directory.`);
+	}
 };

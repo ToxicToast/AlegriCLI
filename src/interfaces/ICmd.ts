@@ -1,7 +1,7 @@
 export interface ICmd {
-	options: ICmdOption[];
-	_name: string;
-	parent: ICmdParent;
+	options?: ICmdOption[];
+	_name?: string;
+	parent?: ICmdParent;
 }
 
 export interface ICmdOption {
