@@ -1,22 +1,26 @@
 import chalk from 'chalk';
-import { errorIcon, successIcon, defaultIcon, warningIcon } from './icons';
+import { errorIcon, successIcon, defaultIcon, warningIcon } from '../helpers/iconHelper';
 
-export class Log {
+export class Logger {
 
 	public log(message: string): void {
-		console.log(defaultIcon + message);
+		this.outputLog(defaultIcon + message);
 	}
 	public warn(message: string): void  {
-		console.log(warningIcon + chalk.yellow(message));
+		this.outputLog(warningIcon + chalk.yellow(message));
 	}
 	public danger(message: string): void  {
-		console.log(errorIcon + chalk.red(message));
+		this.outputLog(errorIcon + chalk.red(message));
 	}
 	public success(message: string): void  {
-		console.log(successIcon + chalk.green(message));
+		this.outputLog(successIcon + chalk.green(message));
 	}
 	public alegri(message: string): void  {
-		console.log(chalk.redBright(message));
+		this.outputLog(chalk.redBright(message));
+	}
+
+	private outputLog(message: string) {
+		console.log(message);
 	}
 
 }

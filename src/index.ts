@@ -1,65 +1,63 @@
 import { command, parse } from 'commander';
-import { IProcessEnv } from './interfaces/IProcessEnv';
-import { reactCommands } from './commands/react';
-import { typescriptCommands } from './commands/typescript';
-import { installCommands } from './commands/install';
-import { createCommands } from './commands/create';
-//
-class AlegriCLI {
+
+import { Logger } from './utils/log';
+
+import { Installer } from './commands/install';
+import { Helper } from './commands/help';
+import { Version } from './commands/version';
+
+export class AlegriCLI {
 	private args: string[];
+	private installer: Installer;
+	private helper: Helper;
+	private version: Version;
+	private logger: Logger;
+	private installerChoice: string = '';
 
 	constructor(args: string[]) {
 		this.args = args;
-		//
-		this.install();
-		this.create();
-		this.installReact();
-		this.installTypescript();
-		this.createReactApp();
-		//
-		this.parseCommands();
+		this.logger = new Logger();
+		this.installer = new Installer(this.logger);
+		this.helper = new Helper(this.logger);
+		this.version = new Version(this.logger);
 	}
 
-	private async install(): Promise<void> {
-		command('alegri-install')
-			.description('Install a Resource')
-			.action(() => {
-				installCommands();
-			});
+	public initCommands(): void {
+		this.installCommand();
+		this.helpCommand();
+		this.versionCommand();
 	}
 
-	private async create(): Promise<void> {
-		command('alegri-create')
-			.description('Creates a Resource')
-			.action(() => {
-				createCommands();
-			});
-	}
-
-	private installTypescript(): void {
-		command('typescript-install')
-			.description('Installs Typescript')
-			.action(typescriptCommands);
-	}
-
-	private installReact(): void {
-		command('react install')
-			.description('Installs the React Framework')
-			.action(reactCommands);
-	}
-
-	private createReactApp(): void {
-		command('react generate <name>')
-			.description('Make a new Project in the <name> directory.')
-			.option('-r, --redux', 'Include Redux Boilerplate and Structure')
-			.option('-ts, --typescript', 'Create Project in Typescript')
-			.option('--no-git', 'Do not include git files and init process')
-			.action(reactCommands);
-	}
-
-	private parseCommands(): void {
+	public parseCommands(): void {
 		parse(this.args);
 	}
+
+	private installCommand(): void {
+		command('install')
+			.alias('i')
+			.description('Install a Resource from the List')
+			.action(async () => {
+				this.installer.init().then(resource => {
+					this.installerChoice = resource;
+				});
+			});
+	}
+
+	private helpCommand(): void {
+		command('help')
+			.alias('h')
+			.description('Help')
+			.action(async () => {
+				this.helper.init();
+			});
+	}
+
+	private versionCommand(): void {
+		command('version')
+			.alias('v')
+			.description('Shows the CLI-Version')
+			.action(async () => {
+				this.version.init();
+			});
+	}
 }
-//
-new AlegriCLI(process.argv);

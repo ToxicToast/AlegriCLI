@@ -1,31 +1,27 @@
-import { Log } from '../utils/log';
-import { shellSync } from 'execa';
 import { prompt } from 'inquirer';
-import { IInstall } from '../interfaces/IInstall';
-import { reactCommands } from './react';
-import { typescriptCommands } from './typescript';
-import { ICmd } from 'interfaces/ICmd';
+import { Logger } from 'utils/log';
 
-const log = new Log();
+export class Installer {
+	private options: string[] = [];
+	private prompt: any;
+	private logger: Logger;
 
-export const installCommands = async (): Promise<void> => {
-	const listPrompt: IInstall = await prompt({
-		type: 'list',
-		name: 'install',
-		choices: [
-			'Typescript',
-			'React',
-			// 'Angular'
-		]
-	});
-	//
-	if (listPrompt.install) {
-		const resource = listPrompt.install;
-		if (resource === 'React') {
-			reactCommands('install', {} as ICmd);
-		}
-		if (resource === 'Typescript') {
-			typescriptCommands('install', {} as ICmd);
-		}
+	constructor(logger: Logger) {
+		this.options.push('Typescript');
+		this.options.push('React');
+		this.logger = logger;
+	}
+
+	public async init(): Promise<string> {
+		await this.initPrompt();
+		return this.prompt.installer;
+	}
+
+	private async initPrompt(): Promise<void> {
+		this.prompt = await prompt({
+			type: 'list',
+			name: 'installer',
+			choices: this.options
+		});
 	}
 }
