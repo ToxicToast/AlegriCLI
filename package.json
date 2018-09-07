@@ -1,6 +1,6 @@
 {
   "name": "alegri-cli",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "Alegri CLI",
   "main": "src/index.ts",
   "scripts": {
