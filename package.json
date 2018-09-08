@@ -1,6 +1,6 @@
 {
   "name": "zenyatta",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "Zenyatta - A DevoTeam | Alegri CLI",
   "main": "dist/index.js",
   "scripts": {
