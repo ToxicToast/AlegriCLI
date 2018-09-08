@@ -1,6 +1,6 @@
 {
   "name": "alegri-cli",
-  "version": "1.0.12",
+  "version": "1.0.14",
   "description": "A DevoTeam | Alegri CLI",
   "main": "dist/index.js",
   "scripts": {
@@ -47,7 +47,7 @@
   "files": [
     "dist"
   ],
-  "bin":{
+  "bin": {
     "alegricli": "./dist/index.js"
   }
 }
