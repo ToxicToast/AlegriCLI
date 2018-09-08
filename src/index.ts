@@ -37,12 +37,14 @@ export class AlegriCLI {
     command('install')
       .alias('i')
       .description('Install a Resource from the List')
-      .action(async () => {
+      .action(async (): Promise<void> => {
         this.installer.init().then((resource) => {
           if (resource === 'Typescript') {
             this.installer.typescript();
           } else if (resource === 'React') {
             this.installer.react();
+          } else if (resource === 'Angular') {
+            this.installer.angular();
           }
         });
       });
@@ -52,7 +54,7 @@ export class AlegriCLI {
     command('create')
       .alias('i')
       .description('Creates a Resource from the List')
-      .action(async (cmd: any) => {
+      .action(async (cmd: any): Promise<void> => {
         this.creater.init().then((resource) => {
           if (resource === 'React') {
             this.creater.react(cmd);
@@ -65,7 +67,7 @@ export class AlegriCLI {
     command('help')
       .alias('h')
       .description('Help')
-      .action(async () => {
+      .action(async (): Promise<void> => {
         this.helper.init();
       });
   }
@@ -74,7 +76,7 @@ export class AlegriCLI {
     command('version')
       .alias('v')
       .description('Shows the CLI-Version')
-      .action(async () => {
+      .action(async (): Promise<void> => {
         this.version.init();
       });
   }
