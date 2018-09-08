@@ -1,7 +1,7 @@
 {
-  "name": "alegri-cli",
-  "version": "1.0.8",
-  "description": "Alegri CLI",
+  "name": "zenyatta",
+  "version": "1.0.7",
+  "description": "Zenyatta - A DevoTeam | Alegri CLI",
   "main": "dist/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
