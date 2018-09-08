@@ -17,7 +17,6 @@ export class CreateReact {
   }
 
   public async init(cmd: any): Promise<void> {
-    console.debug(cmd);
     const title = await this.projectName();
     const status = await this.typeScript();
     if (status) {
