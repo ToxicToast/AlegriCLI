@@ -11,7 +11,7 @@
     "publish:npm": "npm publish",
     "publish:git": "git push --follow-tags origin dev",
     "build": "tsc ./index.ts --outDir dist --lib es2015",
-    "prepublish": "npm run lint && npm run build && npm run version"
+    "prepublish": "npm run lint && npm run build"
   },
   "repository": {
     "type": "git",
