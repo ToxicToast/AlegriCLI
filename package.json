@@ -1,6 +1,6 @@
 {
   "name": "alegri-cli",
-  "version": "1.0.5",
+  "version": "1.0.8",
   "description": "Alegri CLI",
   "main": "dist/index.js",
   "scripts": {
@@ -11,7 +11,7 @@
     "publish:npm": "npm publish",
     "publish:git": "git push --follow-tags origin dev",
     "build": "tsc ./index.ts --outDir dist --lib es2015",
-    "prepublish": "npm run lint"
+    "prepublish": "npm run lint && npm run build && npm run version"
   },
   "repository": {
     "type": "git",
@@ -47,9 +47,6 @@
     "execa": "^1.0.0",
     "inquirer": "^6.2.0",
     "semver": "^5.5.1"
-  },
-  "bin": {
-    "@alegri/alegri-cli": "./dist/index.js"
   },
   "files": [
     "dist"
