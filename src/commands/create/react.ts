@@ -41,7 +41,8 @@ export class CreateReact {
       message: 'What is the Projectname?',
     });
     const projectName = title.title;
-    return `${projectName}`;
+    const returnValue = `${projectName}`;
+    return returnValue.toLowerCase();
   }
 
   private async typeScript(): Promise<any> {
