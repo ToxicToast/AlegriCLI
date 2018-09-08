@@ -1,5 +1,5 @@
 import { prompt } from 'inquirer';
-import { Logger } from 'utils/log';
+import { Logger } from '../utils/log';
 
 import { pushedOptions } from '../helpers/options';
 import { InstallerAngular } from './install/angular';

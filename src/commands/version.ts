@@ -1,6 +1,6 @@
 import { readFileSync } from 'fs';
 import { prompt } from 'inquirer';
-import { Logger } from 'utils/log';
+import { Logger } from '../utils/log';
 
 export class Version {
   private logger: Logger;

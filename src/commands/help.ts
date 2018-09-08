@@ -1,4 +1,4 @@
-import { Logger } from 'utils/log';
+import { Logger } from '../utils/log';
 
 export class Helper {
   private options: any[] = [];

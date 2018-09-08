@@ -1,6 +1,6 @@
 import { ExecaReturns, shellSync } from 'execa';
-import { Logger } from 'utils/log';
 import { delay } from '../../helpers/delay';
+import { Logger } from '../../utils/log';
 
 export class InstallerAngular {
   private logger: Logger;

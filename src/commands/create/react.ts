@@ -1,6 +1,6 @@
 import { shellSync } from 'execa';
 import { prompt } from 'inquirer';
-import { Logger } from 'utils/log';
+import { Logger } from '../../utils/log';
 
 interface IProjectName {
   title?: string;

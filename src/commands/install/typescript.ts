@@ -1,6 +1,7 @@
 import { ExecaReturns, shellSync } from 'execa';
-import { Logger } from 'utils/log';
+
 import { delay } from '../../helpers/delay';
+import { Logger } from '../../utils/log';
 
 export class InstallerTypescript {
   private logger: Logger;
