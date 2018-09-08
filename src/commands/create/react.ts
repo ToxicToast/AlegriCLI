@@ -17,7 +17,6 @@ export class CreateReact {
   }
 
   public async init(cmd: any): Promise<void> {
-    console.debug(cmd);
     const title = await this.projectName();
     const status = await this.typeScript();
     if (status) {
@@ -42,7 +41,8 @@ export class CreateReact {
       message: 'What is the Projectname?',
     });
     const projectName = title.title;
-    return `${projectName}`;
+    const returnValue = `${projectName}`;
+    return returnValue.toLowerCase();
   }
 
   private async typeScript(): Promise<any> {

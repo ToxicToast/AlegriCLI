@@ -1,4 +1,7 @@
-import { command, parse } from 'commander';
+// import { command, parse } from 'commander';
+import * as commander from 'commander';
+import { readFileSync } from 'fs';
+
 import { Creater } from './commands/create';
 import { Helper } from './commands/help';
 import { Installer } from './commands/install';
@@ -23,6 +26,7 @@ export class AlegriCLI {
   }
 
   public initCommands(): void {
+    this.cliCommand();
     this.installCommand();
     this.createCommand();
     this.helpCommand();
@@ -30,11 +34,19 @@ export class AlegriCLI {
   }
 
   public parseCommands(): void {
-    parse(this.args);
+    commander
+      .parse(this.args);
+  }
+
+  private cliCommand(): void {
+    commander
+      .version(this.getCliVersion())
+      .description(this.getCliDescription());
   }
 
   private installCommand(): void {
-    command('install')
+    commander
+      .command('install')
       .alias('i')
       .description('Install a Resource from the List')
       .action(async (): Promise<void> => {
@@ -51,7 +63,8 @@ export class AlegriCLI {
   }
 
   private createCommand(): void {
-    command('create')
+    commander
+      .command('create')
       .alias('i')
       .description('Creates a Resource from the List')
       .action(async (cmd: any): Promise<void> => {
@@ -64,7 +77,8 @@ export class AlegriCLI {
   }
 
   private helpCommand(): void {
-    command('help')
+    commander
+      .command('help')
       .alias('h')
       .description('Help')
       .action(async (): Promise<void> => {
@@ -73,11 +87,24 @@ export class AlegriCLI {
   }
 
   private versionCommand(): void {
-    command('version')
+    commander
+      .command('version')
       .alias('v')
       .description('Shows the CLI-Version')
       .action(async (): Promise<void> => {
         this.version.init();
       });
+  }
+
+  private getCliVersion(): string {
+    const contents = readFileSync('package.json', 'utf8');
+    const parsed = JSON.parse(contents);
+    return parsed.version;
+  }
+
+  private getCliDescription(): string {
+    const contents = readFileSync('package.json', 'utf8');
+    const parsed = JSON.parse(contents);
+    return parsed.description;
   }
 }
