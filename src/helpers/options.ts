@@ -1,8 +1,8 @@
 const options: string[] = [];
 //
 options.push('Typescript');
-options.push('ReactJS');
+options.push('React');
 options.push('Angular');
-options.push('VueJS');
+options.push('Vue');
 //
 export const pushedOptions = options;

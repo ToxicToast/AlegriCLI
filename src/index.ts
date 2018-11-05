@@ -57,6 +57,8 @@ export class AlegriCLI {
             this.installer.react();
           } else if (resource === 'Angular') {
             this.installer.angular();
+          } else if (resource === 'Vue') {
+            this.installer.vue();
           }
         });
       });
