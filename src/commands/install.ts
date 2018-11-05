@@ -5,6 +5,7 @@ import { pushedOptions } from '../helpers/options';
 import { InstallerAngular } from './install/angular';
 import { InstallerReact } from './install/react';
 import { InstallerTypescript } from './install/typescript';
+import { InstallerVue } from './install/vue';
 
 export class Installer {
   private options: string[] = [];
@@ -13,6 +14,7 @@ export class Installer {
   private reactInstaller: InstallerReact;
   private typescriptInstaller: InstallerTypescript;
   private angularInstaller: InstallerAngular;
+  private vueInstaller: InstallerVue;
 
   constructor(logger: Logger) {
     this.options = pushedOptions;
@@ -20,6 +22,7 @@ export class Installer {
     this.reactInstaller = new InstallerReact(this.logger);
     this.typescriptInstaller = new InstallerTypescript(this.logger);
     this.angularInstaller = new InstallerAngular(this.logger);
+    this.vueInstaller = new InstallerVue(this.logger);
   }
 
   public async init(): Promise<string> {
@@ -37,6 +40,10 @@ export class Installer {
 
   public async angular(): Promise<void> {
     await this.angularInstaller.init();
+  }
+
+  public async vue(): Promise<void> {
+    await this.vueInstaller.init();
   }
 
   private async initPrompt(): Promise<void> {
