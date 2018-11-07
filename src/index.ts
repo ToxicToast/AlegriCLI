@@ -75,6 +75,8 @@ export class AlegriCLI {
             this.creater.react(cmd);
           } else if (resource === 'Angular') {
             this.creater.angular(cmd);
+          } else if (resource === 'Vue') {
+            this.creater.vue(cmd);
           }
         });
       });
