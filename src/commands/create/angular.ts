@@ -14,7 +14,6 @@ export class CreateAngular {
   }
 
     public async init(cmd: any): Promise<void> {
-        console.error(cmd, 'angular');
         const title = await this.projectName();
         const command = `ng new ${title}`;
         this.logger.warn(`Creating Project ${title}`);
