@@ -73,6 +73,8 @@ export class AlegriCLI {
         this.creater.init().then((resource) => {
           if (resource === 'React') {
             this.creater.react(cmd);
+          } else if (resource === 'Angular') {
+            this.creater.angular(cmd);
           }
         });
       });
